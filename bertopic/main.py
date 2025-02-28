@@ -12,7 +12,10 @@ from huggingface_hub import HfApi, hf_hub_download
 import os
 
 # Hugging Face Hub 토큰 설정 (필요 시 설정)
-# HF_TOKEN = "your_huggingface_token"
+from huggingface_hub import login
+
+#login(token = "") # 토큰을 입력해주세요  
+# https://huggingface.co/settings/tokens <- hf 가입하시고 토큰 발급받으시면 됩니다
 
 # 업로드할 파일과 리포지토리 설정
 repo_id = "sanghyyyyyyyun/patent"
@@ -52,8 +55,11 @@ if __name__ == '__main__':
     
     docs = list(data_input['text']) 
 
-        
-    #%% 04. topic modelling_naive
+    #%% 03. EDA
+    
+    
+    
+    #%% 04-1. topic modeling_naive
     from bertopic.dimensionality import BaseDimensionalityReduction
     from bertopic import BERTopic
     
@@ -62,7 +68,7 @@ if __name__ == '__main__':
     result_1 = topic_model.get_topic_info()
     
     
-    #%% 04-2. topic modelling_best practice
+    #%% 04-2. topic modeling_best practice
     
     from sentence_transformers import SentenceTransformer
     from umap import UMAP
